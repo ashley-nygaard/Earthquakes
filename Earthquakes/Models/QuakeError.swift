@@ -10,12 +10,14 @@ import Foundation
 
 enum QuakeError: Error {
   case missingData
+  case networkError
 }
 
 extension QuakeError: LocalizedError {
   var description: String? {
     switch self {
     case .missingData: return NSLocalizedString("Found and will discard a quake missing a valid code, magnitude, place or time", comment: "")
+    case .networkError: return NSLocalizedString("Could not get quakes from network", comment: "")
     }
   }
 }
