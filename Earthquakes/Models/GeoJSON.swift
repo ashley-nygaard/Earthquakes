@@ -10,6 +10,7 @@ import Foundation
 
 struct GeoJSON: Decodable {
   
+    // tell the decoder which keys of the root object to decode
   private enum RootCodingKeys: String, CodingKey {
     case features
   }
@@ -28,6 +29,7 @@ struct GeoJSON: Decodable {
     while !featuresContainer.isAtEnd {
       let propertiesContainer = try featuresContainer.nestedContainer(keyedBy: FeatureCodingKeys.self)
       
+      // try? ignores quakes with missing data
       if let properties = try? propertiesContainer.decode(Quake.self, forKey: .properties) {
         quakes.append(properties)
       }

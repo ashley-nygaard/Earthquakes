@@ -17,9 +17,9 @@ enum QuakeError: Error {
 extension QuakeError: LocalizedError {
   var description: String? {
     switch self {
-    case .missingData: return NSLocalizedString("Found and will discard a quake missing a valid code, magnitude, place or time", comment: "")
-    case .networkError: return NSLocalizedString("Could not get quakes from network", comment: "")
-    case .unexpectedError(let error): return NSLocalizedString("Receviced unexpected error. \(error.localizedDescription)", comment: "")
+    case .missingData: return String(localized: "Found and will discard a quake missing a valid code, magnitude, place or time", comment: "")
+    case .networkError: return String(localized: "Could not get quakes from network", comment: "")
+    case .unexpectedError(let error): return String(localized: "Receviced unexpected error. \(error.localizedDescription)", comment: "")
     }
   }
 }
